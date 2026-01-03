@@ -1,8 +1,7 @@
 #actiones
 
 import re
-
-students = []
+from data import students
 
 
 def is_valid_name(name):
@@ -61,7 +60,7 @@ def add_students():
         socials = get_valid_grade("Socials")
         science = get_valid_grade("Science")
 
-        student = {
+        new_students = {
             "name": name,
             "section": section,
             "spanish": spanish,
@@ -70,7 +69,7 @@ def add_students():
             "science": science
         }
 
-        students.append(student)
+        students.append(new_students)
         print("Student added successfully!")
 
 def show_all_students():

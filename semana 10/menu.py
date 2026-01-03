@@ -2,7 +2,7 @@
 
 
 from actions import (
-    add_student,
+    add_students,
     show_all_students,
     show_top_three,
     show_global_average,
@@ -27,7 +27,7 @@ def show_menu():
             continue
 
         if choice == '1':
-            add_student()
+            add_students()
         elif choice == '2':
             show_all_students()
         elif choice == '3':

@@ -7,8 +7,7 @@ from data import students
 
 
 FILE_NAME = 'students_data.csv'
-sections = ['Name', 'section', 'spanish', 'english', 'social' 'science']
-
+sections = ['Name', 'section', 'spanish', 'english', 'social', 'science']
 
 def export_to_csv():
     with open(FILE_NAME, mode='w', newline='') as file:
@@ -16,11 +15,11 @@ def export_to_csv():
         writer.writerow(sections)
         for student in students:
             writer.writerow([
-                student['name'],
-                student['section'],
-                student['spanish'],
-                student['english'],
-                student['social science']
+                students['name'],
+                students['section'],
+                students['spanish'],
+                students['english'],
+                students['social science']
             ])
 
 print(f"Data exported successfully to {FILE_NAME}")
@@ -38,7 +37,8 @@ def import_from_csv():
                 'section': row['section'],
                 'spanish': float(row['spanish']),
                 'english': float(row['english']),
-                'social science': float(row['social science'])
+                'social': float(row['social']),
+                'science': float(row['science'])
             })
 
     print("Data imported successfully from", FILE_NAME)
