@@ -6,8 +6,6 @@ from os.path import exists
 from data import students
 
 
-FILE_NAME = 'students_data.csv'
-sections = ['Name', 'section', 'spanish', 'english', 'social', 'science']
 
 def export_to_csv():
     with open(FILE_NAME, mode='w', newline='') as file:
@@ -21,6 +19,11 @@ def export_to_csv():
                 students['english'],
                 students['social science']
             ])
+
+
+FILE_NAME = 'students_data.csv'
+sections = ['Name', 'section', 'spanish', 'english', 'social', 'science']
+
 
 print(f"Data exported successfully to {FILE_NAME}")
 
