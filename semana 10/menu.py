@@ -8,6 +8,7 @@ from actions import (
     show_global_average,
     delete_student,
     show_failed_students,
+    export_students_csv,
 )
 
 def show_menu():
@@ -19,11 +20,12 @@ def show_menu():
         print("4. Show Global Average")
         print("5. Delete Student")
         print("6. Show Failed Students")
-        print("7. Exit")
+        print("7. Export Students to CSV")
+        print("8. Exit")
 
-        choice = input("Select an option (1-7): ").strip()
-        if not choice.isdigit() or not (1 <= int(choice) <= 7):
-            print("Invalid option. Please enter a number between 1 and 7.")
+        choice = input("Select an option (1-8): ").strip()
+        if not choice.isdigit() or not (1 <= int(choice) <= 8):
+            print("Invalid option. Please enter a number between 1 and 8.")
             continue
 
         if choice == '1':
@@ -39,5 +41,7 @@ def show_menu():
         elif choice == '6':
             show_failed_students()
         elif choice == '7':
+            export_students_csv()
+        elif choice == '8':
             print("Exiting the program.")
             break

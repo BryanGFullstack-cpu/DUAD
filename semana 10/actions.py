@@ -2,7 +2,15 @@
 
 import re
 from data import students
+from storage import save_students_csv
+from data import students
 
+def export_students_csv():
+    if not students:
+        print("No students to export.")
+        return
+
+    save_students_csv(students)
 
 def is_valid_name(name):
     return name.replace(" ", "").isalpha()
@@ -27,34 +35,28 @@ def get_valid_grade(subject):
         except ValueError:
             print("Invalid number. Try again.")
 
-
-
 def add_students():
     n = int(input("How many students do you want to add? "))
 
     for _ in range(n):
         print("\n--- New Student ---")
 
-        # Name
         while True:
             name = input("Full name: ").strip()
             if is_valid_name(name):
                 break
             print("Invalid name. Must contain only letters.")
 
-        # Section
         while True:
             section = input("Section (e.g., 11B): ").strip().upper()
             if is_valid_section(section):
                 break
             print("Invalid section format.")
 
-        # Check duplicates
         if student_exists(name, section):
             print("This student already exists. Skipping.")
             continue
 
-        # Grades
         spanish = get_valid_grade("Spanish")
         english = get_valid_grade("English")
         socials = get_valid_grade("Socials")
@@ -146,3 +148,10 @@ def show_failed_students():
         print(f"{s['name']} ({s['section']}) - Failed:")
         for subj, grade in subjects.items():
             print(f"  {subj}: {grade}")
+
+def export_students_csv():
+    if not students:
+        print("No students to export.")
+        return
+
+    save_students_csv(students)

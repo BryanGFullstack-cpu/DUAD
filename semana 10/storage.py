@@ -3,45 +3,43 @@
 
 import csv
 from os.path import exists
-from data import students
 
 
+FILE_NAME = "students_data.csv"
+HEADERS = ["name", "section", "spanish", "english", "socials", "science"]
 
-def export_to_csv():
-    with open(FILE_NAME, mode='w', newline='') as file:
+def save_students_csv(students):
+    with open(FILE_NAME, mode="w", newline="", encoding="utf-8") as file:
         writer = csv.writer(file)
-        writer.writerow(sections)
+        writer.writerow(HEADERS)
+
         for student in students:
             writer.writerow([
-                students['name'],
-                students['section'],
-                students['spanish'],
-                students['english'],
-                students['social science']
+                student["name"],
+                student["section"],
+                student["spanish"],
+                student["english"],
+                student["socials"],
+                student["science"]
             ])
 
+    print(f"Data exported successfully to {FILE_NAME}")
 
-FILE_NAME = 'students_data.csv'
-sections = ['Name', 'section', 'spanish', 'english', 'social', 'science']
-
-
-print(f"Data exported successfully to {FILE_NAME}")
-
-def import_from_csv():
+def import_from_csv(students):
     if not exists(FILE_NAME):
         print("No data file found to import.")
         return
 
-    with open(FILE_NAME, mode='r') as file:
+    with open(FILE_NAME, mode="r", encoding="utf-8") as file:
         reader = csv.DictReader(file)
         for row in reader:
             students.append({
-                'name': row['Name'],
-                'section': row['section'],
-                'spanish': float(row['spanish']),
-                'english': float(row['english']),
-                'social': float(row['social']),
-                'science': float(row['science'])
+                "name": row["name"],
+                "section": row["section"],
+                "spanish": int(row["spanish"]),
+                "english": int(row["english"]),
+                "socials": int(row["socials"]),
+                "science": int(row["science"])
             })
 
-    print("Data imported successfully from", FILE_NAME)
+    print(f"Data imported successfully from {FILE_NAME}")
