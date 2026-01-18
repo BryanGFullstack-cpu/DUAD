@@ -1,16 +1,6 @@
 #actiones
 
 import re
-from data import students
-from storage import save_students_csv
-from data import students
-
-def export_students_csv():
-    if not students:
-        print("No students to export.")
-        return
-
-    save_students_csv(students)
 
 def is_valid_name(name):
     return name.replace(" ", "").isalpha()
@@ -18,7 +8,7 @@ def is_valid_name(name):
 def is_valid_section(section):
     return bool(re.match(r"^[0-9]{2}[A-Z]$", section))
 
-def student_exists(name, section):
+def student_exists(students, name, section):
     for s in students:
         if s["name"].lower() == name.lower() and s["section"] == section:
             return True
@@ -30,12 +20,11 @@ def get_valid_grade(subject):
             grade = int(input(f"Enter grade for {subject}: "))
             if 0 <= grade <= 100:
                 return grade
-            else:
-                print("Grade must be between 0 and 100.")
+            print("Grade must be between 0 and 100.")
         except ValueError:
             print("Invalid number. Try again.")
 
-def add_students():
+def add_students(students):
     n = int(input("How many students do you want to add? "))
 
     for _ in range(n):
@@ -53,7 +42,7 @@ def add_students():
                 break
             print("Invalid section format.")
 
-        if student_exists(name, section):
+        if student_exists(students, name, section):
             print("This student already exists. Skipping.")
             continue
 
@@ -62,7 +51,7 @@ def add_students():
         socials = get_valid_grade("Socials")
         science = get_valid_grade("Science")
 
-        new_students = {
+        new_student = {
             "name": name,
             "section": section,
             "spanish": spanish,
@@ -71,10 +60,10 @@ def add_students():
             "science": science
         }
 
-        students.append(new_students)
+        students.append(new_student)
         print("Student added successfully!")
 
-def show_all_students():
+def show_all_students(students):
     if not students:
         print("No students registered.")
         return
@@ -83,7 +72,7 @@ def show_all_students():
         print(f"{s['name']} - {s['section']} | "
               f"ES:{s['spanish']} EN:{s['english']} SO:{s['socials']} SC:{s['science']}")
 
-def show_top_three():
+def show_top_three(students):
     if len(students) < 3:
         print("Not enough students to show top 3.")
         return
@@ -99,20 +88,20 @@ def show_top_three():
         avg = (s["spanish"] + s["english"] + s["socials"] + s["science"]) / 4
         print(f"{i}. {s['name']} ({s['section']}) - Average: {avg:.2f}")
 
-def show_global_average():
+def show_global_average(students):
     if not students:
         print("No students registered.")
         return
 
-    total = 0
-    for s in students:
-        avg = (s["spanish"] + s["english"] + s["socials"] + s["science"]) / 4
-        total += avg
+    total = sum(
+        (s["spanish"] + s["english"] + s["socials"] + s["science"]) / 4
+        for s in students
+    )
 
     global_avg = total / len(students)
     print(f"Global average: {global_avg:.2f}")
 
-def delete_student():
+def delete_student(students):
     name = input("Enter student name: ").strip()
     section = input("Enter section: ").strip().upper()
 
@@ -128,7 +117,7 @@ def delete_student():
 
     print("Student not found.")
 
-def show_failed_students():
+def show_failed_students(students):
     failed = []
 
     for s in students:
@@ -148,10 +137,3 @@ def show_failed_students():
         print(f"{s['name']} ({s['section']}) - Failed:")
         for subj, grade in subjects.items():
             print(f"  {subj}: {grade}")
-
-def export_students_csv():
-    if not students:
-        print("No students to export.")
-        return
-
-    save_students_csv(students)

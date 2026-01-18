@@ -4,7 +4,6 @@
 import csv
 from os.path import exists
 
-
 FILE_NAME = "students_data.csv"
 HEADERS = ["name", "section", "spanish", "english", "socials", "science"]
 
