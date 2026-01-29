@@ -29,32 +29,33 @@ class Bus:
         else:
             print(f"{person.name} is not in the bus.")
 
-            bus = Bus(10)
+
+bus = Bus(10)
 
 while True:
-    print("\n--- MENÚ DEL BUS ---")
-    print("1. Subir pasajero")
-    print("2. Bajar pasajero")
-    print("3. Mostrar pasajeros")
-    print("4. Salir")
+    print("\n--- BUS MENU ---")
+    print("1. ADD PASSENGER")
+    print("2. REMOVE PASSENGER")
+    print("3. SHOW PASSENGERS")
+    print("4. EXIT")
 
-    option = input("Seleccione una opción: ")
+    option = input("Select an option: ")
 
     if option == "1":
-        name = input("Nombre del pasajero a subir: ")
+        name = input("NAME OF THE PASSENGER TO ADD: ")
         passenger = Person(name)
         bus.add_passenger(passenger)
 
     elif option == "2":
-        name = input("Nombre del pasajero a bajar: ")
+        name = input("NAME OF THE PASSENGER TO REMOVE: ")
         bus.remove_passenger(name)
 
     elif option == "3":
         bus.show_passengers()
 
     elif option == "4":
-        print("Saliendo del programa...")
+        print("Exiting the program...")
         break
 
     else:
-        print("Opción inválida.")
+        print("Invalid option.")
