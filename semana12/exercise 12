@@ -1,0 +1,42 @@
+#bankaccount exercise
+
+
+class BankAccount:
+    def __init__ (self, balance= 0):
+        self.balance = balance
+
+def deposit(self, amount):
+    if amount <= 0: 
+        print("The amount must be positive")
+        return
+    self.balance += amount
+    print(f"Deposited: {amount}. New balance: {self.balance}")
+
+
+    def withdraw(self, amount):
+        if amount <= 0:
+            print("The amount must be positive")
+            return
+        if amount > self.balance:
+            print("insufficient funds")
+            return
+        self.balance -= amount
+        print(f"Withdrew: {amount}. New balance: {self.balance}")
+
+
+class SavingsAccount(BankAccount):
+    def __init__(self, balance=0, min_balance=0):
+        # al darle una revisa a este tipo de ejercicio me daban la opcion de usar "super" para llamar la herencia, pero aun no lo vi enla clse
+        self.balance = balance
+        self.min_balance = min_balance
+
+    def withdraw(self, amount):
+        if amount <= 0 :
+            print("The amount must be positive")
+            return
+            if self.balance - amount < self.min_balance:
+                print("Cannot withdraw. Minimum balance can not go below the minimum balance.")
+                return
+        
+            self.balance -= amount
+            print(f"Withdrawn: ${amount}. New balance: ${self.balance}")
