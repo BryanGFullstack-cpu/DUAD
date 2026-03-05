@@ -59,4 +59,3 @@ class Rectangle(Shape):
 
     def calculate_area(self):
         return self.width * self.height
-    
