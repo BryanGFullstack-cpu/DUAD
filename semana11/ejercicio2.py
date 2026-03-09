@@ -23,11 +23,19 @@ class Bus:
 
 
     def remove_passenger(self, person):
-        if person in self.passengers:
+        for person in self.passengers:
             self.passengers.remove(person)
             print(f"{person.name} steped out of the bus.")
         else:
             print(f"{person.name} is not in the bus.")
+
+    def show_passengers(self):
+        if not self.passengers:
+            print("The bus is empty.")
+        else:
+            print("Passengers in the bus:")
+            for person in self.passengers:
+                print(f"- {person.name}")
 
 
 bus = Bus(10)
@@ -59,3 +67,4 @@ while True:
 
     else:
         print("Invalid option.")
+    

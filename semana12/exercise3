@@ -1,0 +1,21 @@
+#ejemplo de herencia multiple
+
+
+class Walking:
+    def walk(self):
+        return "Walking."
+
+
+class Talking:
+    def talk(self):
+        return "Talking."
+
+
+class Person(Walking, Talking):
+    pass
+
+
+# Ejemplo de uso
+p = Person()
+print(p.walk())
+print(p.talk())
