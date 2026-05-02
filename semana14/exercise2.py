@@ -17,3 +17,6 @@ def subtract(a, b):
 #Ejemplo de uso
 if __name__ == "__main__":
     print(subtract(10, 4))
+
+
+    #este es el ejercicio que faltaba, el ejercicio 2, el cual es un decorador que valida que los parametros sean numeros, si no lo son, lanza un error de tipo.
