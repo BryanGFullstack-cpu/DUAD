@@ -94,3 +94,5 @@ dq.print_deque()
 
 
 #me diverti con este ejercicio, me gusta la idea de una estructura de datos que permita insertar y eliminar elementos desde ambos extremos. Es como tener lo mejor de ambos mundos entre una pila y una cola. Además, la implementación con nodos enlazados me pareció bastante elegante
+
+#los agregue en main por error

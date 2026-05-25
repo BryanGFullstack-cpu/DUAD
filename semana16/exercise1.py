@@ -48,3 +48,5 @@ print("Pop:", stack.pop())
 print("Pop:", stack.pop())
 
 stack.print_stack()
+
+#los agregue en main por error

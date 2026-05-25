@@ -51,3 +51,6 @@ tree.print_tree()
 
 
 #batalle un poco, en entenderlo pero ahi le dejo el resultado... Investigue un poco mas sobre este.
+
+
+#los agregue en main por error
