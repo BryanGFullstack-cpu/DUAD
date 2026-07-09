@@ -39,13 +39,4 @@ def bubble_sort_steps(ll):
 
 
 
-values = [5, 3, 1, 4, 2]
-ll = LinkedList()
-for v in values:
-    ll.append(v)
-
-sorted_ll, iterations, swaps = bubble_sort_steps(ll)
-print(sorted_ll.to_list())
-print("Iterations:", iterations)
-print("Swaps:", swaps)
 

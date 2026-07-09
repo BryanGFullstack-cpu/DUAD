@@ -19,6 +19,3 @@ def validated_bubble_sort(values):
     bubble_sort_linked_list(ll)
     return ll.to_list()
 
-
-print(validated_bubble_sort([5, "hello", 2]))
-print(validated_bubble_sort([5, 3, 1]))
